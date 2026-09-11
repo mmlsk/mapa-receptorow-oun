@@ -254,6 +254,7 @@
   // EKSPLORATOR SZLAKÓW
   // ============================================================
   function renderPathwayList() {
+    if ($("#totalPathways")) $("#totalPathways").textContent = PATHWAYS.length;
     $("#pathwayList").innerHTML = PATHWAYS.map((p) => `
       <button data-pathway="${p.id}" class="${p.id === state.activePathway ? "active" : ""}">
         ${escapeHtml(p.title)}

@@ -1041,5 +1041,48 @@ const PATHWAYS = [
       { title: "Kompleks NMDA–D1 / GABA_A–D5", desc: "Bezpośrednie interakcje białko-białko domen cytoplazmatycznych (np. ogon C-końcowy GluN1 z pętlą C-końcową D1) stabilizują NMDA w błonie postsynaptycznej.", node: "effector" },
       { title: "Konsekwencja funkcjonalna", desc: "Heterooligomeryzacja tworzy nowe jednostki sygnalizacyjne o odmiennym profilu farmakologicznym niż suma pojedynczych receptorów — kluczowe dla projektowania leków allosterycznych.", node: "outcome-pos" }
     ]
+  },
+  {
+    id: "hypothalamic-energy",
+    title: "Podwzgórzowa regulacja bilansu energetycznego",
+    subtitle: "POMC/MC4R kontra NPY/AgRP — dwa przeciwstawne obwody łaknienia",
+    receptors: ["insr", "mc4r", "npy-y", "igf1r"],
+    steps: [
+      { title: "Sygnały obwodowe docierają do jądra łukowatego", desc: "Insulina i leptyna (proporcjonalne do zapasów tłuszczu) przenikają barierę krew-mózg i wiążą receptory na dwóch przeciwstawnych populacjach neuronów.", node: "ligand" },
+      { title: "Aktywacja neuronów POMC (anoreksygennych)", desc: "INSR/leptyna pobudzają neurony POMC → uwolnienie α-MSH, który wiąże MC4R w PVN.", node: "receptor" },
+      { title: "Hamowanie neuronów NPY/AgRP (orexygennych)", desc: "Te same sygnały hamują sąsiednie neurony NPY/AgRP, zmniejszając uwalnianie NPY (Y1/Y5) i AgRP.", node: "outcome-neg" },
+      { title: "Rozwidlenie na MC4R", desc: "α-MSH (agonista) i AgRP (odwrócony agonista) rywalizują o ten sam receptor MC4R w PVN — matematyczna suma sygnałów wyznacza stan sytości.", node: "junction" },
+      { title: "Efekt anoreksygenny (przewaga α-MSH)", desc: "MC4R/Gαs → ↑cAMP/PKA → pobudzenie neuronów PVN → zmniejszenie łaknienia, ↑ wydatek energetyczny.", node: "outcome-pos" },
+      { title: "Efekt orexygenny (przewaga AgRP/NPY)", desc: "Zablokowany MC4R + aktywny Y1/Y5 (Gαi/GIRK) → silne pobudzenie łaknienia.", node: "outcome-neg" },
+      { title: "Modulacja troficzna IGF1R", desc: "Sygnalizacja IGF1R równolegle wspiera przeżycie i plastyczność neuronów podwzgórzowych biorących udział w obwodzie (PI3K-Akt-mTOR).", node: "effector" }
+    ]
+  },
+  {
+    id: "stress-hpa-axis",
+    title: "Oś stresu: CRH → HPA → zwrotne hamowanie",
+    subtitle: "Neuropeptydowa kaskada od podwzgórza po korę nadnerczy",
+    receptors: ["crhr1", "avpr1a", "cck"],
+    steps: [
+      { title: "Bodziec stresowy", desc: "Percepcja zagrożenia aktywuje neurony przykomorowe podwzgórza (PVN) uwalniające CRH (i wspomagająco AVP) do układu wrotnego przysadki.", node: "ligand" },
+      { title: "CRHR1 na przysadce", desc: "CRH wiąże CRHR1 (Gαs) na kortykotropach → ↑cAMP/PKA → uwolnienie ACTH do krwiobiegu.", node: "receptor" },
+      { title: "Wzmocnienie przez V1a", desc: "Wazopresyna synergistycznie nasila uwalnianie ACTH poprzez V1a (Gαq/PLCβ) na tych samych komórkach przysadki.", node: "effector" },
+      { title: "Kortyzol z kory nadnerczy", desc: "ACTH stymuluje wydzielanie kortyzolu, który krąży ogólnoustrojowo i przenika z powrotem do OUN.", node: "outcome-pos" },
+      { title: "Ujemne sprzężenie zwrotne w hipokampie", desc: "Kortyzol wiąże receptory glukokortykoidowe w hipokampie, hamując dalsze wydzielanie CRH z PVN — pętla homeostatyczna.", node: "outcome-neg" },
+      { title: "Modulacja lękowa CCK2", desc: "Niezależnie, cholecystokinina w obwodach korowo-limbicznych (CCK2/Gαq) może nasilać odpowiedź lękową i wyzwalać napady paniki — równoległy, częściowo niezależny obwód.", node: "junction" }
+    ]
+  },
+  {
+    id: "purinergic-glia",
+    title: "Purynergiczna sygnalizacja glejowa",
+    subtitle: "ATP/ADP jako alarm tkankowy dla astrocytów i mikrogleju",
+    receptors: ["p2y1", "p2y12", "p2x7"],
+    steps: [
+      { title: "Uwolnienie ATP/ADP", desc: "Uszkodzenie tkanki, intensywna aktywność neuronalna lub apoptoza uwalniają ATP do przestrzeni zewnątrzkomórkowej, gdzie ektonukleotydazy przekształcają je częściowo w ADP.", node: "ligand" },
+      { title: "P2Y1 na astrocytach", desc: "ADP/ATP wiążą P2Y1 (Gαq/PLCβ) → IP3 → uwolnienie Ca²⁺ z ER w jednym astrocycie.", node: "receptor" },
+      { title: "Propagacja fali wapniowej", desc: "Ca²⁺ i IP3 przechodzą przez złącza szczelinowe (koneksyny) do sąsiednich astrocytów, tworząc rozprzestrzeniającą się falę międzykomórkową.", node: "junction" },
+      { title: "P2Y12 na mikrogleju spoczynkowym", desc: "Równolegle ADP wiąże P2Y12 (Gαi/o) na mikrogleju, wywołując chemotaksję i szybkie wysunięcie wypustek w kierunku źródła sygnału.", node: "effector" },
+      { title: "P2X7 przy wysokich stężeniach ATP", desc: "Masywne uszkodzenie tkanki (bardzo wysokie [ATP]) otwiera jonotropowy P2X7 → napływ Ca²⁺/Na⁺ i aktywacja inflamasomu NLRP3.", node: "outcome-neg" },
+      { title: "Skutek sieciowy", desc: "Skoordynowana odpowiedź glejowa: astrocyty synchronizują aktywność sieciową (P2Y1), mikroglej migruje i fagocytuje uszkodzone struktury (P2Y12), a przy przeciążeniu uruchamia się neurozapalenie (P2X7).", node: "outcome-pos" }
+    ]
   }
 ];
